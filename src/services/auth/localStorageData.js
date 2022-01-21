@@ -6,7 +6,7 @@ export function localStorageData(value) {
 
   if (localData && localData.hasOwnProperty('token')) {
     Object.keys(localData).forEach(function (key) {
-      if (key == value) {
+      if (key === value) {
         fialValue = localData[key];
       }
     });
@@ -16,8 +16,6 @@ export function localStorageData(value) {
 }
 
 export function getLocalUserdata(value) {
-  let fialValue = null;
-
   let localData = JSON.parse(localStorage.getItem('localdealtoken'));
 
   // if (localData && localData.hasOwnProperty('token')) {
@@ -32,8 +30,6 @@ export function getLocalUserdata(value) {
 }
 
 export function updatelocalData(value) {
-  let fialValue = null;
-
   let localData = JSON.parse(localStorage.getItem('localdealtoken'));
 
   localData.fname = value.fname;
