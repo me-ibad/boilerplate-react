@@ -1,12 +1,8 @@
-import { SIGNUP_USER } from './type';
-import { shopper, smallbusiness } from '../../../config/config';
+import { shopper } from 'config/config';
 import userServices from '../../../services/httpService/userAuth/userServices';
 import history from '../../../history';
-import { useMutation, useQuery } from 'react-query';
-import {
-  getLocalUserdata,
-  localStorageData,
-} from '../../../services/auth/localStorageData';
+
+import { localStorageData } from '../../../services/auth/localStorageData';
 export const userSignup = (data) => async (dispatch) => {
   dispatch({
     type: 'User_Register_pending',
@@ -76,7 +72,7 @@ export const login = (data) => (dispatch) => {
           type: 'User_Error',
           payload: 'Token Not Valid',
         });
-
+        // eslint-disable-next-line
         throw 'Some problem ';
       }
 
@@ -122,23 +118,8 @@ export const applyForForgetPass = (data) => {
   );
 };
 
-const switchRoles = (data) => (dispatch) => {
-  let newrole;
-  if (data == smallbusiness) {
-    newrole = shopper;
-  } else {
-    newrole = smallbusiness;
-  }
-
-  dispatch({
-    type: 'ChangeCurrentRole',
-    payload: newrole,
-  });
-
-  history.push(`/${newrole}`);
-};
 export const ChangeUserRoles = (data) => (dispatch) => {
-  if (data == shopper) {
+  if (data === shopper) {
     dispatch({
       type: 'ChangeCurrentRole',
       payload: data,
@@ -151,7 +132,7 @@ export const ChangeUserRoles = (data) => (dispatch) => {
         .commonGetService(`/isSellerExist/${localStorageData('_id')}`)
         .then(
           (response) => {
-            if (response.data == 'sellerExist') {
+            if (response.data === 'sellerExist') {
               dispatch({
                 type: 'ChangesmallbusinessPass',
                 payload: true,
@@ -163,6 +144,7 @@ export const ChangeUserRoles = (data) => (dispatch) => {
             }
           },
           (error) => {
+            // eslint-disable-next-line
             const message =
               (error.response &&
                 error.response.data &&

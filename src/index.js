@@ -11,11 +11,10 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import reportWebVitals from './reportWebVitals';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import Root from 'routes';
-
 import { master } from './store/reducers/combineReducer';
+import { ToastContainer } from 'react-toastify';
 import LanguageContextProvider from 'common/contexts/LanguageContext';
 
-import { ToastContainer } from 'react-toastify';
 const queryClient = new QueryClient();
 const store = createStore(master, composeWithDevTools(applyMiddleware(thunk)));
 ReactDOM.render(
@@ -25,6 +24,7 @@ ReactDOM.render(
         <LanguageContextProvider>
           <Root />
         </LanguageContextProvider>
+
         <ToastContainer limit={1} />
       </React.StrictMode>
     </QueryClientProvider>

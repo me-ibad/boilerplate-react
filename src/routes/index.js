@@ -7,9 +7,13 @@ import Main from './Main';
 function Root() {
   return (
     <Router history={history}>
-      <Routes>
-        <Route path='/*' element={<Main />} />
-      </Routes>
+      <main>
+        <section className='relative w-full py-32 h-full  min-h-screen '>
+          <Routes>
+            <Route path='/*' element={<Main />} />
+          </Routes>
+        </section>
+      </main>
     </Router>
   );
 }

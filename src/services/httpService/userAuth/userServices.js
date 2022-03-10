@@ -1,5 +1,5 @@
 import http from '../http-common';
-import authHeader from '../../auth/authHeader';
+
 class userService {
   //   getAll() {
   //     return http.get("/tutorials");
@@ -29,6 +29,9 @@ class userService {
   }
   commonGetService(route, data) {
     return http.get(route, data);
+  }
+  commonDeleteService(route, data) {
+    return http.delete(route, data);
   }
 
   //   update(id, data) {
