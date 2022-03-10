@@ -6,9 +6,9 @@ function Main() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<LandingPage />} />
+        <Route path='/landing' element={<LandingPage />} />
 
-        <Route path='/home' element={<Home />} />
+        <Route path='/' element={<Home />} />
       </Routes>
     </>
   );
