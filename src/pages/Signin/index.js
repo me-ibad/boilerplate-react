@@ -1,35 +1,36 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+
+import { useNavigate, Link } from 'react-router-dom';
+
 import * as Yup from 'yup';
+import { useLoginEmailAccount } from 'hooks';
+
 function Signin() {
   let navigate = useNavigate();
+  const { mutateAsync: loginEmailAccount, isLoading } = useLoginEmailAccount();
 
   const formik = useFormik({
     initialValues: {
       pass: '',
-      email: '',
-      role: '',
+      username: '',
     },
     validationSchema: Yup.object().shape({
-      email: Yup.string()
+      username: Yup.string()
         .min(3, 'Must be more than 4 characters')
         .required('Required'),
       pass: Yup.string()
         .min(8, 'Must be more than 8 characters')
-        .required('Required'),
-      role: Yup.string().required('Required'),
+        .required('Required')
+        .matches(
+          /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+          'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
+        ),
     }),
     onSubmit: async (values) => {
-      // toast('');
-      if (values.role === 'admin') {
-        toast('admin');
-        navigate('/admin/adduser');
-      } else if (values.role === 'boot') {
-        toast('home');
-        navigate('/home');
-      }
+      // eslint-disable-next-line
+      const response = await loginEmailAccount(values);
+      navigate('/');
     },
   });
   return (
@@ -41,37 +42,34 @@ function Signin() {
               <div className='rounded-t mb-0 px-6 py-6'>
                 <div className='text-center mb-3'>
                   <h6 className='text-blueGray-500 text-sm font-bold'>
-                    Sign in with
+                    Sign in
                   </h6>
                 </div>
 
                 <hr className='mt-6 border-b-1 border-blueGray-300' />
               </div>
               <div className='flex-auto px-4 lg:px-10 py-10 pt-0'>
-                <div className='text-blueGray-400 text-center mb-3 font-bold'>
-                  <small>Or sign in with credentials</small>
-                </div>
                 <form onSubmit={formik.handleSubmit}>
                   <div className='relative w-full mb-3'>
                     <label
                       className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                       htmlFor='grid-password'
                     >
-                      Email
+                      Email/UserName
                     </label>
                     <input
-                      id='email'
-                      name='email'
-                      type='email'
+                      id='username'
+                      name='username'
+                      type='text'
                       className='input-styl'
-                      placeholder='Email'
+                      placeholder='Email/UserName'
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.email}
+                      value={formik.values.username}
                     />
-                    {formik.touched.email && formik.errors.email ? (
+                    {formik.touched.email && formik.errors.username ? (
                       <div className='text-red-500 text-sm'>
-                        {formik.errors.email}
+                        {formik.errors.username}
                       </div>
                     ) : null}
                   </div>
@@ -99,39 +97,17 @@ function Signin() {
                       </div>
                     ) : null}
                   </div>
-                  <div className='relative w-full mb-3'>
-                    <label
-                      className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
-                      htmlFor='grid-password'
-                    >
-                      Roles
-                    </label>
-                    <select
-                      name='role'
-                      id='role'
-                      className='input-styl'
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.role}
-                    >
-                      <option value='' disabled selected>
-                        select role
-                      </option>
-                      <option value='admin'>Admin</option>
-                      <option value='boot'>Boot</option>
-                    </select>
-
-                    {formik.touched.role && formik.errors.role ? (
-                      <div className='text-red-500 text-sm'>
-                        {formik.errors.role}
-                      </div>
-                    ) : null}
-                  </div>
 
                   <div className='text-center mt-6'>
-                    <button className='btn-styl' type='submit'>
-                      Sign In
-                    </button>
+                    {isLoading ? (
+                      <div />
+                    ) : (
+                      <>
+                        <button className='btn-styl' type='submit'>
+                          Sign In
+                        </button>
+                      </>
+                    )}
                   </div>
                 </form>
               </div>
@@ -146,11 +122,11 @@ function Signin() {
                   <small>Forgot password?</small>
                 </a>
               </div>
-              {/* <div className='w-1/2 text-right'>
-                    <Link to='/auth/register' className='text-black'>
-                      <small>Create new account</small>
-                    </Link>
-                  </div> */}
+              <div className='w-1/2 text-right'>
+                <Link to='/signup' className='text-black'>
+                  <small>Create new account</small>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function FooterSmall(props) {
                   href='/'
                   className=' hover:text-gray-300 text-blueGray-500 text-sm font-semibold py-1'
                 >
-                  Elite
+                  new
                 </a>
               </div>
             </div>

@@ -1,10 +1,12 @@
 // import history from '../../history';
+
+import { localToken } from 'config/config';
 export function localStorageData(value) {
   let fialValue = null;
 
-  let localData = JSON.parse(localStorage.getItem('localdealtoken'));
+  let localData = JSON.parse(localStorage.getItem(localToken));
 
-  if (localData && localData.hasOwnProperty('token')) {
+  if (localData) {
     Object.keys(localData).forEach(function (key) {
       if (key === value) {
         fialValue = localData[key];
@@ -16,7 +18,7 @@ export function localStorageData(value) {
 }
 
 export function getLocalUserdata(value) {
-  let localData = JSON.parse(localStorage.getItem('localdealtoken'));
+  let localData = JSON.parse(localStorage.getItem(localToken));
 
   // if (localData && localData.hasOwnProperty('token')) {
   //   Object.keys(localData).forEach(function (key) {
@@ -29,9 +31,13 @@ export function getLocalUserdata(value) {
   return localData;
 }
 
-export function updatelocalData(value) {
-  let localData = JSON.parse(localStorage.getItem('localdealtoken'));
+export function storeLocalData(value) {
+  localStorage.setItem(localToken, JSON.stringify(value));
+}
 
+export function updatelocalData(value) {
+  let localData = JSON.parse(localStorage.getItem(localToken));
+  console.log(value, localData);
   localData.fname = value.fname;
 
   localData.lname = value.lname;
@@ -40,7 +46,12 @@ export function updatelocalData(value) {
 
   localData.contactNo = value.contactNo;
 
-  localStorage.setItem('localdealtoken', JSON.stringify(localData));
+  const transformedLocalData = {
+    ...localData,
+    ...value,
+  };
+
+  localStorage.setItem(localToken, JSON.stringify(transformedLocalData));
 
   // if (localData && localData.hasOwnProperty('token')) {
   //   Object.keys(localData).forEach(function (key) {
@@ -54,27 +65,27 @@ export function updatelocalData(value) {
 }
 
 export function updateLocalstoragepic(value) {
-  let localData = JSON.parse(localStorage.getItem('localdealtoken'));
+  let localData = JSON.parse(localStorage.getItem(localToken));
 
   localData.pic = value;
 
   console.log(localData);
 
-  localStorage.setItem('localdealtoken', JSON.stringify(localData));
+  localStorage.setItem(localToken, JSON.stringify(localData));
 }
 
 export function updateLocalstorageToken(value) {
-  let localData = JSON.parse(localStorage.getItem('localdealtoken'));
+  let localData = JSON.parse(localStorage.getItem(localToken));
 
   localData.token = value;
 
   console.log(localData);
 
-  localStorage.setItem('localdealtoken', JSON.stringify(localData));
+  localStorage.setItem(localToken, JSON.stringify(localData));
 }
 
 export function Logout(value) {
-  localStorage.removeItem('localdealtoken');
+  localStorage.removeItem(localToken);
 
   // history.push(value);
 

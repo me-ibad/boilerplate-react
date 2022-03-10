@@ -1,41 +1,43 @@
 import React from 'react';
 import { useFormik } from 'formik';
 
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { useCreateEmailAccount } from 'hooks';
+import { useParams } from 'react-router-dom';
 
-function Signup() {
+import { useUpdatePass } from 'hooks';
+
+function UpdatePassword() {
   let navigate = useNavigate();
-  const { mutateAsync: registerEmailAccount, isLoading } =
-    useCreateEmailAccount();
+
+  const { mutateAsync: updatepassword, isLoading } = useUpdatePass();
+
+  const params = useParams();
 
   const formik = useFormik({
     initialValues: {
       pass: '',
-      email: '',
-      username: '',
+      cpass: '',
     },
     validationSchema: Yup.object().shape({
-      email: Yup.string()
-        .min(3, 'Must be more than 4 characters')
-        .required('Required'),
-
-      username: Yup.string()
-        .min(3, 'Must be more than 5 characters')
-        .required('Required'),
-
       pass: Yup.string()
-        .min(8, 'Must be more than 8 characters')
+        .min(8, 'must be 8 digit')
         .required('Required')
         .matches(
           /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
           'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
         ),
+      cpass: Yup.string().oneOf(
+        [Yup.ref('pass'), null],
+        'Passwords must match'
+      ),
     }),
     onSubmit: async (values) => {
-      const response = await registerEmailAccount(values);
+      values.email = decodeURIComponent(params.email);
+      values.uniqueId = params.id;
+
+      const response = await updatepassword(values);
 
       if (response.status) {
         navigate('/');
@@ -51,7 +53,7 @@ function Signup() {
               <div className='rounded-t mb-0 px-6 py-6'>
                 <div className='text-center mb-3'>
                   <h6 className='text-blueGray-500 text-sm font-bold'>
-                    Signup
+                    Update Password
                   </h6>
                 </div>
 
@@ -64,55 +66,7 @@ function Signup() {
                       className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
                       htmlFor='grid-password'
                     >
-                      User Name
-                    </label>
-                    <input
-                      id='username'
-                      name='username'
-                      type='text'
-                      className='input-styl'
-                      placeholder='User Name'
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.username}
-                    />
-                    {formik.touched.username && formik.errors.username ? (
-                      <div className='text-red-500 text-sm'>
-                        {formik.errors.username}
-                      </div>
-                    ) : null}
-                  </div>
-
-                  <div className='relative w-full mb-3'>
-                    <label
-                      className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
-                      htmlFor='grid-password'
-                    >
-                      Email
-                    </label>
-                    <input
-                      id='email'
-                      name='email'
-                      type='email'
-                      className='input-styl'
-                      placeholder='Email'
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.email}
-                    />
-                    {formik.touched.email && formik.errors.email ? (
-                      <div className='text-red-500 text-sm'>
-                        {formik.errors.email}
-                      </div>
-                    ) : null}
-                  </div>
-
-                  <div className='relative w-full mb-3'>
-                    <label
-                      className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
-                      htmlFor='grid-password'
-                    >
-                      Password
+                      Passwort
                     </label>
                     <input
                       name='pass'
@@ -125,21 +79,43 @@ function Signup() {
                       value={formik.values.pass}
                     />
                     {formik.touched.pass && formik.errors.pass ? (
-                      <div className='text-red-500 text-sm'>
+                      <div className='text-red-500 text-xs'>
                         {formik.errors.pass}
                       </div>
                     ) : null}
                   </div>
 
+                  <div className='relative w-full mb-3'>
+                    <label
+                      className='block uppercase text-blueGray-600 text-xs font-bold mb-2'
+                      htmlFor='grid-password'
+                    >
+                      Confirm Passwort
+                    </label>
+                    <input
+                      name='cpass'
+                      id='cpass'
+                      type='password'
+                      className='input-styl'
+                      placeholder='Confirm Passwort'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.cpass}
+                    />
+                    {formik.touched.cpass && formik.errors.cpass ? (
+                      <div className='text-red-500 text-xs'>
+                        {formik.errors.cpass}
+                      </div>
+                    ) : null}
+                  </div>
+
                   <div className='text-center mt-6'>
-                    {isLoading ? (
+                    {isLoading === true ? (
                       <div />
                     ) : (
-                      <>
-                        <button className='btn-styl' type='submit'>
-                          Sign Up
-                        </button>
-                      </>
+                      <button className='btn-styl' type='submit'>
+                        Update
+                      </button>
                     )}
                   </div>
                 </form>
@@ -147,10 +123,15 @@ function Signup() {
             </div>
             <div className='flex flex-wrap mt-6 relative'>
               <div className='w-1/2'>
-                <Link to='/' className='text-black'>
-                  <small>Signin</small>
-                </Link>
+                <a href='/' className='text-black'>
+                  Signin
+                </a>
               </div>
+              {/* <div className='w-1/2 text-right'>
+                    <Link to='/auth/register' className='text-black'>
+                      <small>Create new account</small>
+                    </Link>
+                  </div> */}
             </div>
           </div>
         </div>
@@ -159,4 +140,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default UpdatePassword;
