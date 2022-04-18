@@ -15,10 +15,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* scroll bar */
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #04a5c2;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #04a5c2;
+}
+::-webkit-scrollbar {
+  height: 5px; /* height of horizontal scrollbar ← You're missing this */
+  width: 5px; /* width of vertical scrollbar */
+  /* border: 1px solid #d5d5d5; */
+}
+
+/* index styl */
+
 .input-styl {
   @apply border border-gray-300	 px-3 py-3 placeholder-black text-black bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150;
 }
 
 .btn-styl {
   @apply border-2 border-color-primary	bg-color-primary text-white text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 w-full ease-linear transition-all duration-150;
+}
+.mobileview {
+  @apply hidden lg:hidden md:hidden xs:block sm:block;
+}
+.desktopview {
+  @apply block lg:block md:block sm:hidden xs:hidden;
+}
+.center-styl {
+  @apply flex  content-center items-center justify-center;
 }
