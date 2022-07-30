@@ -23,7 +23,8 @@ function LandingPage() {
         </select>
       </div>
       <button onClick={() => navigate('/home')} className='text-emerald-700	'>
-        {t.hello}
+        {/* {t.hello} */}
+        <i class='fa-thin fa-treasure-chest'></i>
       </button>
       &nbsp;
       <input type='checkbox' class='accent-pink-500' checked />

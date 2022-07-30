@@ -1,9 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import ReactDOM from 'react-dom/client';
+
 import 'assets/css/index.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'assets/css/App.css';
+import 'assets/fonts/Poppins-Regular.ttf';
+
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
@@ -11,13 +15,14 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import reportWebVitals from './reportWebVitals';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import Root from 'routes';
-import { master } from './store/reducers/combineReducer';
+import { master } from 'redux/store/reducers/combineReducer';
 import { ToastContainer } from 'react-toastify';
 import LanguageContextProvider from 'common/contexts/LanguageContext';
 
 const queryClient = new QueryClient();
 const store = createStore(master, composeWithDevTools(applyMiddleware(thunk)));
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <Provider store={store}>
     <QueryClientProvider client={queryClient}>
       <React.StrictMode>

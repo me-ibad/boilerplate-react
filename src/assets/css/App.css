@@ -1,3 +1,10 @@
+:root {
+  --yellow: #f2b619;
+  --white: #ffffff;
+  --primary: #04a5c2;
+  --color-lightgrey: #f9f9f9;
+}
+
 .wd-styl {
   width: 170px;
 }
@@ -9,8 +16,18 @@
 .imgwidth {
   width: 130px;
 }
+.text-color {
+  color: var(--primary);
+}
+
 @media screen and (max-width: 767px) {
   .mtmob {
     margin-top: 100px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .mtmob {
+    /* margin-top: 100px; */
   }
 }
