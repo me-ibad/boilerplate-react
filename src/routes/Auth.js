@@ -5,6 +5,7 @@ import Signup from 'pages/auth/Signup';
 import ForgotPassword from 'pages/auth/ForgotPassword';
 import UpdatePassword from 'pages/auth/UpdatePassword';
 
+
 function Auth() {
   return (
     <>
@@ -15,6 +16,7 @@ function Auth() {
             <Route path='/signup' element={<Signup />} />
             <Route path='/forgotpassword' element={<ForgotPassword />} />
             <Route path='/updatepass/:email/:id' element={<UpdatePassword />} />
+          
           </Routes>
         </section>
       </main>

@@ -19,15 +19,33 @@
 .text-color {
   color: var(--primary);
 }
+*{
+  margin: 0px;
+  padding: 0px;
+}
 
 @media screen and (max-width: 767px) {
   .mtmob {
-    margin-top: 100px;
+    margin-top: 0px;
   }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
   .mtmob {
-    /* margin-top: 100px; */
+    margin-top: 0px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .suggQuest-items {
+    margin-top: 2px;
+  }
+  .askQuestion-wrapper{
+    width: 95%;
+  }
+  .chatInput-wrapper{
+    width: 95%;
+  }
+  .chatArea-wrapper{
+width: 90%;
   }
 }

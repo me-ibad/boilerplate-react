@@ -10,25 +10,7 @@ function LandingPage() {
   const { language, changeLanguage } = useLanguageContext();
   return (
     <div>
-      <div>
-        <select
-          value={language}
-          onChange={(e) => changeLanguage(e.target.value)}
-        >
-          <option value='' disabled selected>
-            {t.lang}
-          </option>
-          <option value='en'>English</option>
-          <option value='ar'>عربى</option>
-        </select>
-      </div>
-      <button onClick={() => navigate('/home')} className='text-emerald-700	'>
-        {/* {t.hello} */}
-        <i class='fa-thin fa-treasure-chest'></i>
-      </button>
-      &nbsp;
-      <input type='checkbox' class='accent-pink-500' checked />
-      <button onClick={() => toast('Welcome!')}> {t.welcome}</button>
+     abc
     </div>
   );
 }
