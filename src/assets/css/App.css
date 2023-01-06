@@ -23,6 +23,9 @@
   margin: 0px;
   padding: 0px;
 }
+.chatArea-wrapper{
+  height: 55%;
+}
 
 @media screen and (max-width: 767px) {
   .mtmob {
@@ -36,16 +39,111 @@
   }
 }
 @media screen and (max-width: 600px) {
-  .suggQuest-items {
-    margin-top: 2px;
+  .mainScreen-wrapper{
+    height: 100vh;
+    /* border: 2px solid rgb(236, 167, 20); */
   }
-  .askQuestion-wrapper{
+  .suggQuestBox-wrapper{
+    height: 12vh;
+    /* border: 2px solid rgb(106, 255, 6); */
+  }
+  .suggQuestBox-wrapper button {
+    font-size: 14px;
+    padding: 4px 4px;
+  }
+  .autoQuestBar-wrapper{
+    height: 10vh;
+    /* border: 2px solid yellow; */
+  }
+  .askQuestion-item{
     width: 95%;
+  }
+  .askQuestionText-wrapper p{
+    font-size: 12px;
+  }
+  .askQuestionIcon-wrapper i{
+    font-size: 13px;
+  }
+  .chatArea-wrapper {
+    
+    height: 10vh;
+    /* border: 2px solid rgba(139, 2, 2, 0.847); */
+  }
+  .chatBox-item {
+    width: 80%;
+  }
+  .robotMessage-wrapper p{
+    font-size: 13px;
+  }
+  .robotMessage-wrapper i{
+    font-size: 17px;
+  }
+  .userMessage-wrapper p{
+    font-size: 13px;
+  }
+  .userMessage-wrapper i{
+    font-size: 17px;
   }
   .chatInput-wrapper{
-    width: 95%;
+   height: px;
+   /* border: 2px solid rgb(250, 5, 250); */
   }
+  .chatInputfield-item{
+    width: 95%;
+    /* border: 2px solid brown; */
+    
+  }
+  
   .chatArea-wrapper{
-width: 90%;
+    height: 66%;
+    
+  }
+  /* homeScreen */
+  .robotMessageWrapper{
+    height: 20vh;
+  width: 90%;
+  
+  }
+  .robotIcon i{
+    margin-right: 5px;
+  }
+  .chatSuggQuestWrapper{
+    height: 20vh;
+    width: 90%;
+  }
+  .dropdown-items{
+    padding: 15px;
+  }
+  .ConvoWrapper{
+    height: 20vh;
+    width: 90%;
+  }
+  .convo-item{
+    padding: 15px 0px;
+  }
+  .allConvobtn-wrapper{
+    height: 8vh;
+    width: 90%;
+  }
+  .allConvoText{
+  margin-left: 20px;
   }
 }
+
+/*HomeScreen */
+.robotMessageWrapper{
+  height: 20vh;
+
+}
+.chatSuggQuestWrapper{
+  height: 20vh;
+}
+.ConvoWrapper{
+  height: 20vh;
+}
+.allConvobtn-wrapper{
+  height: 8vh;
+}
+.convo-item{
+ background-color: #036b62;
+} 
