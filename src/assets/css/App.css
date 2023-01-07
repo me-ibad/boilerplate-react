@@ -23,9 +23,6 @@
   margin: 0px;
   padding: 0px;
 }
-.chatArea-wrapper{
-  height: 55%;
-}
 
 @media screen and (max-width: 767px) {
   .mtmob {
@@ -43,20 +40,28 @@
     height: 100vh;
     /* border: 2px solid rgb(236, 167, 20); */
   }
+
   .suggQuestBox-wrapper{
     height: 12vh;
     /* border: 2px solid rgb(106, 255, 6); */
   }
-  .suggQuestBox-wrapper button {
+  /* .suggQuestBox-wrapper button {
     font-size: 14px;
     padding: 4px 4px;
   }
   .autoQuestBar-wrapper{
     height: 10vh;
-    /* border: 2px solid yellow; */
+    border: 2px solid cyan;
+    background-color: #04a5c2;
+  
   }
   .askQuestion-item{
     width: 95%;
+   
+  } */
+  .homeScreenChatWrapper{
+    height: 100vh;
+    border: 2px solid rgb(1, 111, 111);
   }
   .askQuestionText-wrapper p{
     font-size: 12px;
@@ -64,13 +69,11 @@
   .askQuestionIcon-wrapper i{
     font-size: 13px;
   }
-  .chatArea-wrapper {
-    
-    height: 10vh;
-    /* border: 2px solid rgba(139, 2, 2, 0.847); */
-  }
+ 
   .chatBox-item {
-    width: 80%;
+    width: 90%;
+    height: 44vh;
+    /* border: 2px springgreen solid; */
   }
   .robotMessage-wrapper p{
     font-size: 13px;
@@ -85,7 +88,7 @@
     font-size: 17px;
   }
   .chatInput-wrapper{
-   height: px;
+   width: 90%;
    /* border: 2px solid rgb(250, 5, 250); */
   }
   .chatInputfield-item{
@@ -94,13 +97,8 @@
     
   }
   
-  .chatArea-wrapper{
-    height: 66%;
-    
-  }
   /* homeScreen */
   .robotMessageWrapper{
-    height: 20vh;
   width: 90%;
   
   }
@@ -108,21 +106,31 @@
     margin-right: 5px;
   }
   .chatSuggQuestWrapper{
-    height: 20vh;
     width: 90%;
+    /* border: 2px solid peachpuff; */
+   
   }
   .dropdown-items{
     padding: 15px;
   }
   .ConvoWrapper{
-    height: 20vh;
     width: 90%;
+    /* border: 2px solid peru; */
   }
   .convo-item{
     padding: 15px 0px;
   }
+  .askQuestionWrapper{
+    width: 90%;
+    padding: 14px 0px;
+    /* border: 2px solid royalblue; */
+  }
+  .askQuestionWrapper p{
+    font-size: 14px;
+  }  
+
   .allConvobtn-wrapper{
-    height: 8vh;
+  
     width: 90%;
   }
   .allConvoText{
@@ -130,19 +138,33 @@
   }
 }
 
-/*HomeScreen */
+
+/*HomeScreen PC */
+.homeScreenChatWrapper {
+  height: 100vh;
+}
 .robotMessageWrapper{
-  height: 20vh;
+
+  margin-top: 5px;
 
 }
 .chatSuggQuestWrapper{
-  height: 20vh;
+  margin-top: 4px;
+}
+.chatArea-wrapper{
+  margin-top: 4px;
+}
+.chatInput-wrapper{
+  margin-top: 4px;
 }
 .ConvoWrapper{
-  height: 20vh;
+  margin-top: 4px;
+}
+.askQuestionWrapper{
+  margin-top: 5px;
 }
 .allConvobtn-wrapper{
-  height: 8vh;
+  margin-top: 5px;
 }
 .convo-item{
  background-color: #036b62;

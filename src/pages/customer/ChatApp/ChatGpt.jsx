@@ -189,7 +189,6 @@ function ChatGpt() {
               <span className="">
                 <i
                   class="fas fa-comment-dots text-2xl mr-4"
-                  onClick={onClickEnter}
                 
                 ></i>
               </span>
