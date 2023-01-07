@@ -61,7 +61,7 @@
   } */
   .homeScreenChatWrapper{
     height: 100vh;
-    border: 2px solid rgb(1, 111, 111);
+    /* border: 2px solid rgb(1, 111, 111); */
   }
   .askQuestionText-wrapper p{
     font-size: 12px;
