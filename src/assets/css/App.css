@@ -19,7 +19,7 @@
 .text-color {
   color: var(--primary);
 }
-*{
+* {
   margin: 0px;
   padding: 0px;
 }
@@ -36,12 +36,12 @@
   }
 }
 @media screen and (max-width: 600px) {
-  .mainScreen-wrapper{
+  .mainScreen-wrapper {
     height: 100vh;
     /* border: 2px solid rgb(236, 167, 20); */
   }
 
-  .suggQuestBox-wrapper{
+  .suggQuestBox-wrapper {
     height: 12vh;
     /* border: 2px solid rgb(106, 255, 6); */
   }
@@ -59,113 +59,312 @@
     width: 95%;
    
   } */
-  .homeScreenChatWrapper{
+  .homeScreenChatWrapper {
     height: 100vh;
     /* border: 2px solid rgb(1, 111, 111); */
   }
-  .askQuestionText-wrapper p{
+  .askQuestionText-wrapper p {
     font-size: 12px;
   }
-  .askQuestionIcon-wrapper i{
+  .askQuestionIcon-wrapper i {
     font-size: 13px;
   }
- 
-  .chatBox-item {
+
+  .robotMessage-wrapper p {
+    font-size: 13px;
+  }
+  .robotMessage-wrapper i {
+    font-size: 17px;
+  }
+  .userMessage-wrapper p {
+    font-size: 13px;
+  }
+  .userMessage-wrapper i {
+    font-size: 17px;
+  }
+  /* .chatInput-wrapper {
     width: 90%;
-    height: 44vh;
-    /* border: 2px springgreen solid; */
-  }
-  .robotMessage-wrapper p{
-    font-size: 13px;
-  }
-  .robotMessage-wrapper i{
-    font-size: 17px;
-  }
-  .userMessage-wrapper p{
-    font-size: 13px;
-  }
-  .userMessage-wrapper i{
-    font-size: 17px;
-  }
-  .chatInput-wrapper{
-   width: 90%;
-   /* border: 2px solid rgb(250, 5, 250); */
-  }
-  .chatInputfield-item{
+   
+  } */
+  .chatInputfield-item {
     width: 95%;
     /* border: 2px solid brown; */
-    
   }
-  
+
   /* homeScreen */
-  .robotMessageWrapper{
-  width: 90%;
-  
+  .robotMessageWrapper {
+    width: 90%;
   }
-  .robotIcon i{
+  .robotIcon i {
     margin-right: 5px;
   }
-  .chatSuggQuestWrapper{
-    width: 90%;
-    /* border: 2px solid peachpuff; */
-   
-  }
-  .dropdown-items{
-    padding: 15px;
-  }
-  .ConvoWrapper{
+
+  .ConvoWrapper {
     width: 90%;
     /* border: 2px solid peru; */
   }
-  .convo-item{
+  .convo-item {
     padding: 15px 0px;
   }
-  .askQuestionWrapper{
+  .askQuestionWrapper {
     width: 90%;
     padding: 14px 0px;
     /* border: 2px solid royalblue; */
   }
-  .askQuestionWrapper p{
+  .askQuestionWrapper p {
     font-size: 14px;
-  }  
+  }
 
-  .allConvobtn-wrapper{
-  
+  .allConvobtn-wrapper {
     width: 90%;
   }
-  .allConvoText{
-  margin-left: 20px;
+  .allConvoText {
+    margin-left: 20px;
   }
 }
 
-
 /*HomeScreen PC */
-.homeScreenChatWrapper {
+.HomeScreenParentWrapper {
+  /* border: 2px solid red; */
+}
+/* .homeScreenChatWrapper {
+  height: 100vh;
+  border: 2px springgreen solid;
+} */
+.robotMessageWrapper {
+  margin-top: 5px;
+}
+
+.ConvoWrapper {
+  margin-top: 4px;
+}
+.askQuestionWrapper {
+  margin-top: 5px;
+}
+.allConvobtn-wrapper {
+  margin-top: 5px;
+}
+.convo-item {
+  background-color: #036b62;
+}
+
+/* Chat SideBar pc*/
+
+.sideBarWrapper {
+  background-color: #1d1e20;
+  /* border: 2px solid rgb(22, 1, 255); */
   height: 100vh;
 }
-.robotMessageWrapper{
+.navItems-wrapper {
+  height: 60vh;
+}
+.navItems li {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  margin-top: 15px;
+  padding: 5px 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+/* Popular Question */
+.PopquestionContainer {
+  /* border: 2px solid rgb(150, 183, 0); */
+  width: 100%;
 
+}
+.Section-popular{
+  height: 90vh;
+  /* border: 2px solid blue; */
+}
+.popularQuestion-heading {
+  /* background: linear-gradient(to right, rgba(250, 63, 94, 0.89), rgb(167, 42, 245)); */
+}
+.question-items {
+  width: 100%;
+  height: 80px;
   margin-top: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.question-items p {
+  font-size: 16px;
+}
+
+.question-items i {
+  font-size: 12px;
+}
+.popularQuest-section {
+  height: 85vh;
+}
+.chatBtn {
+  background: linear-gradient(
+    to right,
+    rgba(250, 63, 94, 0.89),
+    rgb(167, 42, 245)
+  );
+}
+/* ChatBox */
+.ChatBoxContainer {
+  height: 100vh;
+  /* border: 2px solid rgb(56, 37, 255); */
+}
+.chatArea-wrapper {
+  height: 90vh;
+  /* border: 2px solid rgb(183, 249, 0); */
+}
+.chatBox-item {
+  width: 90%;
+  height: 85vh;
+}
+.input-suggest-wrapper {
+  /* border: 2px solid rgb(4, 247, 255); */
+  width: 98%;
+  margin: auto;
 
 }
-.chatSuggQuestWrapper{
+.chatInput-wrapper {
   margin-top: 4px;
 }
-.chatArea-wrapper{
-  margin-top: 4px;
+/*  */
+.dropdown-items {
+  background: linear-gradient(
+    to right,
+    rgba(250, 63, 94, 0.89),
+    rgb(167, 42, 245)
+  );
+  color: white;
+ 
 }
-.chatInput-wrapper{
-  margin-top: 4px;
+.dropdownColor{
+
+ color: black;
 }
-.ConvoWrapper{
-  margin-top: 4px;
+.homeItem{
+  background: linear-gradient(
+    to right,
+    rgba(250, 63, 94, 0.89),
+    rgb(167, 42, 245)
+  );
 }
-.askQuestionWrapper{
-  margin-top: 5px;
+
+@media screen and (max-width: 600px) {
+  .hamBurger {
+    height: 5vh;
+
+
+    /* border: 2px solid black; */
+  }
+  .sideBarWrapper {
+    width: 50%;
+    height: 95vh;
+    position: absolute;
+  }
+  .navItems-wrapper {
+    height: 45vh;
+  }
+  .iconsWrapper {
+    height: 48vh;
+  }
+  /* Legal -Assist .AI Popular QUestion */
+  .PopquestionContainer {
+    width: 100%;
+    height: 85vh;
+    /* border: 2px solid green; */
+  }
+  .Section-popular {
+   
+    align-items: center;
+  }
+  .legalAssitHeading h1{
+font-size: 20px;
+  }
+  .pquestion-wrapper {
+    width: 98%;
+    height: 70vh;
+    margin: auto;
+    margin-top: 10px;
+    /* border: 2px solid blueviolet; */
+    display: block;
+  }
+  .question-items {
+    width: 33%;
+    margin-top: 5px;
+    height: 14.5vh;
+    overflow: hidden;
+  
+    
+   
+    /* border: 2px solid cyan; */
+    
+  }
+  .legalitems{
+    /* border: 2px solid rgb(1, 156, 17); */
+    width: 100%;
+  }
+  .legalQuestionIcons{
+    margin-top: 5px;
+  }
+  .legalQuestionIcons i{
+    font-size: 18px;
+    display: none;
+  }
+  .legalQuestionIcons h4{
+    font-size: 14px;
+  }
+  .legal-Question-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .legal-Research-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+
+  }
+ 
+  .searchCaseLaw-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+
+  }
+  .popularQuestion-heading {
+    width: 80%;
+  }
+  .question-items P {
+    font-size: 12px;
+  
+
+    /* border: 2px solid cyan; */
+  }
+  /* Chat box */
+  .ChatBoxContainer {
+    width: 98%;
+    height: 95vh;
+  }
+  .chatArea-wrapper {
+    height: 85vh;
+  }
+  .chatBox-item {
+    width: 100%;
+    height: 83vh;
+  }
+
+  .input-suggest-wrapper {
+    height: 10vh;
+   
+
+  }
+  .chatInput-wrapper {
+    width: 100%;
+  }
+  
+  /* DropDown */
+  .dropdown-items{
+  
+color: white;
+  }
+  .chatSuggQuestWrapper {
+    width: 56%;
+   
+  }
 }
-.allConvobtn-wrapper{
-  margin-top: 5px;
-}
-.convo-item{
- background-color: #036b62;
-} 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PopularQuestion from "../AiAssistChat/PopularQuestion";
 
 function ChatGpt() {
   const [text, setText] = useState("Ask a question question about...");
@@ -198,6 +199,8 @@ function ChatGpt() {
           </div>
         </div>
       </div>
+      {/* Popular question */}
+      {/* <PopularQuestion/> */}
     </>
   );
 }
