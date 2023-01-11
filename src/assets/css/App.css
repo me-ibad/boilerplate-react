@@ -247,7 +247,26 @@
     rgb(167, 42, 245)
   );
 }
-
+/* Brief Chat */
+.folderitems{
+  /* border: 2px solid cyan; */
+}
+.folderitems i{
+font-size: 100px;
+}
+.folderitems p{
+  position: relative;
+  top: 65px;
+ left: 20px;
+}
+.breifChatbtn{
+  background: linear-gradient(
+    to right,
+    rgba(250, 63, 94, 0.89),
+    rgb(167, 42, 245)
+  );
+  color: white;
+}
 @media screen and (max-width: 600px) {
   .hamBurger {
     height: 5vh;
@@ -366,5 +385,28 @@ color: white;
   .chatSuggQuestWrapper {
     width: 56%;
    
+  }
+  /* Brief Chat */
+  .breifChatContainer{
+    height: 80vh;
+  }
+  .breifChatbox{
+    height: 70vh;
+  }
+  .folderitems{
+  
+    width: 50%;
+    margin: auto;
+  }
+  .briefChatBtnWrapper{
+  
+    width: 65%;
+    margin: auto;
+    /* border: 2px solid red; */
+    height: 12vh;
+    align-items: flex-end;
+  }
+  .breifChatbtn{
+    padding: 15px 25px;
   }
 }
