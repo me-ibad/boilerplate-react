@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import PopularQuestion from "./PopularQuestion";
 import ChatBox from "./ChatBox";
+import axios from "axios";
 
 function ChatSideBar() {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -28,24 +29,75 @@ function ChatSideBar() {
     setNewMessage(e.target.value);
     // setAllMessages((prevState) => ({ ...prevState, body: e.target.value}));
   };
-  const onClickEnter = (event) => {
-    event.preventDefault();
+  const [responseData, setResponseData] = useState(null);
+  
+  const onClickEnter = async (event) => {
+    // event.preventDefault();
+    //
+    //     setChatScreen(true);
+    //     setNewMessage("");
     setMessages([
       ...messages,
       {
         body: newMessage,
         time: "2:10 AM",
-        isUser: true,
+         isUser: true,
       },
     ]);
-    setChatScreen(true);
-    setNewMessage("");
+    const url = 'https://gpt.encodersoft.co/ask';
+    const body = {
+      query: newMessage,
+    };
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const { data } = await axios.post(url,body,options)
+      // setResponseData(data);
+      setChatScreen(true);
+      let array=messages
+      array.push(
+        {
+          body: data.data,
+          time: "2:10 AM",
+           isUser: false,
+        }
+      )
+      console.log(array)
+      setMessages(array);
+    
+    } catch (error) {
+      console.error(error);
+    }
   };
+  console.log(responseData,"responseData==-------")
+  console.log(messages,'-----nmesss')
+  // const onClickEnter = (event) => {
+  //   event.preventDefault();
+  //   setMessages([
+  //     ...messages,
+  //     {
+  //       body: newMessage,
+  //       time: "2:10 AM",
+  //       isUser: true,
+  //     },
+  //   ]);
+  //   setChatScreen(true);
+  //   setNewMessage("");
+  
+  // };
+    
+   
 
   const [suggestChat, setSuggChat] = useState("");
   function onQuestionChange(event) {
     setSuggChat(event.target.value);
   }
+
+
 
   return (
     <>
@@ -96,7 +148,7 @@ function ChatSideBar() {
           <div className="chatQuestion w-full">
             <div className="PopquestionContainer  w-100">
               {chatScreen||suggestChat? (
-                <ChatBox suggestChat={suggestChat} messages={messages} />
+                <ChatBox suggestChat={suggestChat} messages={messages} responseData={responseData} />
               ) : (
                 <PopularQuestion chatHandler={chatHandler} />
               )}
@@ -135,7 +187,7 @@ function ChatSideBar() {
                       className=" w-full py-2.5 px-2 focus:outline-none text-center"
                       placeholder="Continue Conversation "
                       onChange={onType}
-                      value={newMessage}
+                      // value={newMessage}
                     />
                     <span className="">
                       <i

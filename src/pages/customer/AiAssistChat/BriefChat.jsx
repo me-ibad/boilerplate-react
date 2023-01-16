@@ -5,8 +5,8 @@ function BriefChat() {
     <>
     <section className="breifChatContainer    flex justify-center items-center h-96">
            <div className="breifChatbox  w-8/12 ">
-        <div className="BreifChatHeadingBox">
-          <h4 className="text-center md:text-2xl font-bold">Briefcase: Organize your Chats</h4>
+        <div className="BreifChatHeadingBox py-2 md:w-7/12 m-auto rounded-xl">
+          <h4 className="text-center md:text-2xl text-white font-bold">Briefcase: Organize your Chats</h4>
         </div>
         <div className="FolderWrapper md:flex justify-center justify-evenly   w-full m-auto">
           <div className="folderitems">

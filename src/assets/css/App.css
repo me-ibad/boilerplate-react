@@ -247,7 +247,14 @@
     rgb(167, 42, 245)
   );
 }
-/* Brief Chat */
+/* Brief Chat & Summarize Chat*/
+.BreifChatHeadingBox, .summarizeChatHeadingBox{
+  background: linear-gradient(
+    to right,
+    rgba(250, 63, 94, 0.89),
+    rgb(167, 42, 245)
+  );
+}
 .folderitems{
   /* border: 2px solid cyan; */
 }
@@ -267,6 +274,10 @@ font-size: 100px;
   );
   color: white;
 }
+.summarizeWrapper{
+  height:75vh;
+}
+
 @media screen and (max-width: 600px) {
   .hamBurger {
     height: 5vh;
@@ -409,4 +420,5 @@ color: white;
   .breifChatbtn{
     padding: 15px 25px;
   }
+  
 }

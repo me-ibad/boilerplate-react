@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function ChatBox({suggestChat,messages}) {
+function ChatBox({suggestChat,messages,responseData}) {
  
 
   return (
@@ -12,17 +12,7 @@ function ChatBox({suggestChat,messages}) {
 
       <div className=" chatArea-wrapper flex items-center">
         <div className="chatBox-item border-2 border-gray-400 w-11/12 overflow-y-auto   m-auto text-left p-2">
-          <div className="robotMessage-wrapper my-4 w-7/12  flex  items-center">
-            <ul className="">
-              <li className="userMessage m-2 flex items-center">
-                <i class="fas fa-robot mr-1"></i>
-                <p className="bg-gray-200  rounded p-1">
-                  {suggestChat ? `${suggestChat}` : "I am Robot"}
-                </p>
-                <i class="far fa-copy ml-1"></i>
-              </li>
-            </ul>
-          </div>
+          
           <div className=" flex justify-end my-3">
             <div className="userMessage-wrapper w-7/12 ">
               {messages.map((message, index) =>
@@ -36,7 +26,17 @@ function ChatBox({suggestChat,messages}) {
                       <i class="far fa-copy ml-2"></i>
                     </li>
                   </ul>
-                ) : null
+                ) : <div className="robotMessage-wrapper my-4 w-7/12  flex  items-center">
+                <ul className="">
+                  <li className="userMessage m-2 flex items-center">
+                    <i class="fas fa-robot mr-1"></i>
+                    <p className="bg-gray-200  rounded p-1">
+                      {message.body}
+                    </p>
+                    <i class="far fa-copy ml-1"></i>
+                  </li>
+                </ul>
+              </div>
               )}
             </div>
           </div>
