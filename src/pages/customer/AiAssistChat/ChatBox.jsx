@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
 
-function ChatBox({suggestChat,messages,responseData}) {
+function ChatBox({isQuestion,messages,responseData}) {
  
-
+console.log(messages,"---------message")
   return (
     <>
       {/* Suggested Question */}

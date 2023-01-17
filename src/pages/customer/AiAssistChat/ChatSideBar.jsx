@@ -25,13 +25,31 @@ function ChatSideBar() {
   };
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const [isQuestion, isSetQuestion] = useState('');
   const [chatScreen, setChatScreen] = useState(false);
 
   const onType = (e) => {
     setNewMessage(e.target.value);
     // setAllMessages((prevState) => ({ ...prevState, body: e.target.value}));
   };
-  const [responseData, setResponseData] = useState(null);
+ 
+  function onQuestionChange(event) {
+   
+  
+    console.log(isQuestion,'IsQuestion-------')
+    setMessages([
+      ...messages,
+      {
+        body: event.target.value,
+        time: '2:14 AM',
+        isUser: true,
+      },
+    ]);
+    
+     CallAPI(event.target.value);
+     setChatScreen(true);
+  };
+
 
   const onClickEnter = async (event) => {
     setChatScreen(true);
@@ -45,7 +63,7 @@ function ChatSideBar() {
     ]);
     setNewMessage('');
 
-    CallAPI(newMessage);
+     CallAPI(newMessage);
   };
 
   //   setChatScreen(true);
@@ -53,10 +71,10 @@ function ChatSideBar() {
 
   // };
 
-  const CallAPI = async (newMessage) => {
+  const CallAPI = async (newMessage1,isQuestion1) => {
     const url = 'https://gpt.encodersoft.co/ask';
     const body = {
-      query: newMessage,
+      query: newMessage1?newMessage1:isQuestion1,
     };
     const options = {
       headers: {
@@ -68,19 +86,18 @@ function ChatSideBar() {
       const { data } = await axios.post(url, body, options);
       // setResponseData(data);
 
-      setNewMessage('');
+     //// setNewMessage('');
       setMessages([
         ...messages,
 
         {
-          body: newMessage,
+          body: newMessage1,
           time: '2:10 AM',
           isUser: true,
         },
-
         {
           body: data.data,
-          time: '2:10 AM',
+          time: '2:13 AM',
           isUser: false,
         },
       ]);
@@ -88,10 +105,7 @@ function ChatSideBar() {
       console.error(error);
     }
   };
-  const [suggestChat, setSuggChat] = useState('');
-  function onQuestionChange(event) {
-    setSuggChat(event.target.value);
-  }
+ 
 
   return (
     <>
@@ -141,11 +155,11 @@ function ChatSideBar() {
           {/* Chat Screen */}
           <div className='chatQuestion w-full'>
             <div className='PopquestionContainer  w-100'>
-              {chatScreen || suggestChat ? (
+              {chatScreen || isQuestion ? (
                 <ChatBox
-                  suggestChat={suggestChat}
+                  isQuestion={isQuestion}
                   messages={messages}
-                  responseData={responseData}
+                 
                 />
               ) : (
                 <PopularQuestion chatHandler={chatHandler} />
@@ -165,25 +179,25 @@ function ChatSideBar() {
                   </option>
                   <option
                     className='dropdownColor'
-                    value=' Ask a question question about  Family Law'
+                    value='Ask a question question about Family Law'
                   >
                     Family Law
                   </option>
                   <option
                     className='dropdownColor'
-                    value=' Ask a question question about   Business Law'
+                    value='Ask a question question about Business Law'
                   >
                     Business Law
                   </option>
                   <option
                     className='dropdownColor'
-                    value=' Ask a question question about Criminal Law'
+                    value='Ask a question question about Criminal Law'
                   >
                     Criminal Law
                   </option>
                   <option
                     className='dropdownColor'
-                    value='  Ask a question question about Civil Law'
+                    value='Ask a question question about Civil Law'
                   >
                     Civil Law
                   </option>
